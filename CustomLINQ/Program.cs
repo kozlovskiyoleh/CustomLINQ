@@ -42,6 +42,17 @@ namespace CustomLinq
                         return item;
             return default(T);
         }
+
+        public static IEnumerable<T> CustomTake<T>(this IEnumerable<T> collection, int count)
+        {
+            foreach(var item in collection)
+            {
+                if (count == 0)
+                    yield break;
+                yield return item;
+                count--;
+            }
+        }
     }
 
     public class Program
